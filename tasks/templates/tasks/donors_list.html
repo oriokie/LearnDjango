@@ -1,0 +1,10 @@
+{% extends "tasks/layout.html" %} {%block body%}
+
+<h1>Donors List</h1>
+<ul>
+  {% for donor in donors %}
+  <li>{{ donor.name }} - {{ donor.donation }}</li>
+  {% endfor %}
+</ul>
+
+{%endblock%}
