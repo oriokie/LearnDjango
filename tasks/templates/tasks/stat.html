@@ -24,32 +24,14 @@
     cursor: pointer;
   }
 </style>
+<div></div>
 
 <div>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %} {{ form.as_p }}
 
-    <button type="submit">Reconcile</button>
+    <button type="submit">Get Statement</button>
   </form>
 </div>
-
-<table>
-  <thead>
-    <tr>
-      {% for column in summarydata.columns %}
-      <th>{{ column }}</th>
-      {% endfor %}
-    </tr>
-  </thead>
-  <tbody>
-    {% for index, row in summarydata.iterrows %}
-    <tr>
-      {% for value in row %}
-      <td>{{ value }}</td>
-      {% endfor %}
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
 
 {%endblock%}

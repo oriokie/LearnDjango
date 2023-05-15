@@ -2,7 +2,7 @@ from django.db import models
 import os
 from django.core.files.storage import FileSystemStorage
 
-'''
+"""
 def upload_to(instance, filename):
     base_path = 'media/uploads'
 
@@ -13,13 +13,15 @@ def upload_to(instance, filename):
         os.makedirs(base_path)
     return os.path.join(base_path, filename)
 
-'''
+"""
+
 
 def overwrite_upload_to(instance, filename):
     fs = FileSystemStorage()
     if fs.exists(filename):
         fs.delete(filename)
     return filename
+
 
 class File(models.Model):
     Statement = models.FileField(upload_to=overwrite_upload_to)
@@ -34,3 +36,7 @@ class Donor(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class StatFile(models.Model):
+    Statement = models.FileField(upload_to=overwrite_upload_to)
